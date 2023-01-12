@@ -4,12 +4,23 @@
     <div class="bg-dark py-5">
         <div class="container text-light">
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form action=" {{ route('comics.store') }} " method="POST">
                 @csrf
 
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" name="title" class="form-control bg-dark text-light" id="title" placeholder="inserire titolo">
+                    <input type="text" name="title" class="form-control bg-dark text-light" id="title"
+                        placeholder="inserire titolo">
                 </div>
                 <div class="mb-3">
                     <label for="thumb" class="form-label">Image</label>
