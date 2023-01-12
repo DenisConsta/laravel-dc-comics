@@ -1,1 +1,225 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+@import './partials/mixin.scss';
+@import './partials/variables.scss';
+
+html body {}
+
+.debug {
+    border: 1px solid firebrick;
+}
+
+ul {
+    list-style: none;
+
+    li a {
+        text-decoration: none;
+    }
+}
+
+header {
+    nav {
+        padding: 1rem 0;
+
+        .logo img {
+            max-height: 80px;
+        }
+
+        .links li a {
+            color: rgb(94, 90, 90);
+            text-transform: uppercase;
+            font-family: "Roboto Condensed", sans-serif;
+            font-weight: 600;
+            font-size: .9rem;
+
+            &:hover,
+            &.active {
+                color: $color-primary;
+
+                /* &::after {
+                    content: '';
+                    position: relative;
+                    bottom: -140%;
+                    display: block;
+                    height: 5px;
+                    width: 100%;
+                    background: $color-primary;
+                } */
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .links {
+                display: none;
+            }
+        }
+
+    }
+}
+
+#top-footer {
+    background-image: url('../img/footer-bg.jpg');
+    background-size: cover;
+
+    .logo-bg {
+        background-image: url('../img/dc-logo-bg.png');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .links-col {
+
+        h3 {
+            text-transform: uppercase;
+            font-family: "Roboto Condensed", sans-serif;
+            color: white;
+        }
+
+        a {
+            color: rgb(156, 154, 154);
+            text-transform: capitalize;
+
+            &:hover {
+                color: white;
+            }
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
+
+#bottom-footer {
+    @include displayFlex('both');
+    height: 120px;
+    background-color: $back-footerBottom;
+    font-family: "Roboto Condensed", sans-serif;
+
+    .my-btn {
+        color: white;
+        border: 2px solid $color-primary;
+        text-transform: uppercase;
+        padding: .5rem 1rem;
+        cursor: pointer;
+    }
+
+    .container {
+        @include displayFlex('between');
+
+        h3 {
+            color: $color-primary;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        ul li img {
+            cursor: pointer;
+        }
+    }
+
+
+}
+
+#shop {
+    height: 140px;
+    background-color: $color-primary;
+
+    .container {
+        @include displayFlex("both");
+    }
+
+    ul li {
+        @include displayFlex("both");
+        gap: 1rem;
+        cursor: pointer;
+
+        a {
+            text-decoration: none;
+            text-transform: uppercase;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 400;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        img {
+            height: 50px;
+            max-width: 50px;
+        }
+    }
+}
+
+#hero {
+    height: 400px;
+
+    img {
+        height: 400px;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+    }
+}
+
+#content {
+    background-color: $back-main;
+    @include displayFlex("both");
+    padding: 5rem 0;
+
+    .container {
+        @include displayFlex("both");
+        flex-direction: column;
+        position: relative;
+
+        &::after {
+            content: "Current series";
+            display: block;
+            color: white;
+            text-transform: uppercase;
+            font-family: "Roboto Condensed", sans-serif;
+            position: absolute;
+            background-color: $color-primary;
+            font-size: 2rem;
+            padding: 0 2rem;
+            bottom: 110%;
+            left: 0;
+        }
+
+        .my-btn {
+            background-color: $color-primary;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 0.5rem 2rem;
+            color: white;
+            font-size: 0.8rem;
+            font-family: "Roboto Condensed", sans-serif;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+    }
+
+    .thumb {
+        flex-basis: 15%;
+        @include displayFlex("both");
+        flex-direction: column;
+        cursor: pointer;
+        text-decoration: none;
+
+        img {
+            height: 180px;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        h3 {
+            color: white;
+            font-size: 1rem;
+            padding: 1rem 0;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-family: "Open Sans", sans-serif;
+        }
+    }
+}
