@@ -3,7 +3,9 @@
         <nav class="d-flex justify-content-between align-items-center ">
             <!-- ? Logo -->
             <div class="logo">
-                <img src=" {{ Vite::asset('resources/img/dc-logo.png') }} " alt="DC-Logo">
+                <a href=" {{route('comics.index')}} ">
+                    <img src=" {{ Vite::asset('resources/img/dc-logo.png') }} " alt="DC-Logo">
+                </a>
             </div>
 
             <!-- ? Links -->

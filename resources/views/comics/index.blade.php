@@ -25,7 +25,7 @@
 
                 {{$comics->links()}}
 
-                <a class="my-btn">Add more</a>
+                <a href=" {{route('comics.create')}} " class="my-btn">Add more</a>
             </div>
         </div>
     </main>
