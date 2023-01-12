@@ -16,16 +16,23 @@
                     </div>
                 @endif
                 <!-- ? Row -->
-                <div class="row row-cols-xl-4 row-cols-xxl-4">
-                    <!-- ? Col -->
-                    @foreach ($comics as $card)
+                <div class="row row-cols-xl-4 row-cols-xxl-4 w-100">
+                    @forelse ($comics as $card)
                         <div class="col mb-4">
-                            <a class="text-decoration-none" href=" {{ route('comics.show', $card) }} ">
-                                <img style="max-height: 290px; max-width: 190px;" src=" {{ $card->thumb }} " alt="">
-                                <h3 class="text-light lead"> {{ $card->series }} </h3>
-                            </a>
+                            <div class="my-card">
+                                <a class="text-decoration-none" href=" {{ route('comics.show', $card) }} ">
+                                    <img style="max-height: 290px; max-width: 190px;" src=" {{ $card->thumb }} "
+                                        alt="">
+                                    <h3 class="text-light lead"> {{ $card->series }} </h3>
+                                </a>
+
+                            </div>
                         </div>
-                    @endforeach
+
+                    @empty
+
+                        <h3 class="text-light py-5">No results.</h3>
+                    @endforelse
                 </div>
 
                 {{ $comics->links() }}
