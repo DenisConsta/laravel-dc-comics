@@ -4,8 +4,9 @@
     <div class="bg-dark py-5">
         <div class="container text-light">
 
-            <form action=" {{ route('comics.store') }} " method="POST">
+            <form action=" {{ route('comics.update', $comic) }} " method="POST">
                 @csrf
+                @method('PUT')
 
                 {{-- ? Title --}}
                 <div class="mb-3">
@@ -13,7 +14,7 @@
                     <input type="text" name="title"
                         class="form-control bg-dark text-light @error('title')
                     is-invalid  @enderror"
-                        id="title" placeholder="inserire titolo" value=" {{old('title')}} ">
+                        id="title" placeholder="inserire titolo" value=" {{old('title', $comic->title )}} ">
                     <div class="invalid-feedback">
                         @error('title')
                             {{ $message }}
@@ -27,7 +28,7 @@
                     <input type="text" name="thumb"
                         class="form-control bg-dark text-light @error('thumb')
                     is-invalid  @enderror"
-                        id="thumb" placeholder="inserire l'url dell'immagine" value=" {{old('thumb')}} ">
+                        id="thumb" placeholder="inserire l'url dell'immagine" value=" {{old('thumb', $comic->thumb )}} ">
                     <div class="invalid-feedback" >
                         @error('thumb')
                             {{ $message }}
@@ -41,7 +42,7 @@
                     <input type="text" name="price"
                         class="form-control bg-dark text-light @error('price')
                     is-invalid  @enderror"
-                        id="price" placeholder="inserire il prezzo " value=" {{old('price')}} ">
+                        id="price" placeholder="inserire il prezzo " value=" {{old('price', $comic->price )}} ">
                     <div class="invalid-feedback">
                         @error('price')
                             {{ $message }}
@@ -55,7 +56,7 @@
                     <input type="text" name="series"
                         class="form-control bg-dark text-light @error('series')
                     is-invalid  @enderror"
-                        id="series" placeholder="inserire la serie di appartenenza " value=" {{old('series')}} ">
+                        id="series" placeholder="inserire la serie di appartenenza " value=" {{old('series', $comic->series )}} ">
                     <div class="invalid-feedback">
                         @error('series')
                             {{ $message }}
@@ -69,7 +70,7 @@
                     <input type="text" name="sale_date"
                         class="form-control bg-dark text-light @error('sale_date')
                     is-invalid  @enderror"
-                        id="sale_date" placeholder="inserire la data (YY-M-D) " value=" {{old('sale_date')}} ">
+                        id="sale_date" placeholder="inserire la data (YY-M-D) " value=" {{old('sale_date', $comic->sale_date )}} ">
                     <div class="invalid-feedback">
                         @error('sale_date')
                             {{ $message }}
@@ -83,7 +84,7 @@
                     <input type="text" name="type"
                         class="form-control bg-dark text-light @error('type')
                     is-invalid  @enderror"
-                        id="type" placeholder="inserire la tipologia " value=" {{old('type')}} ">
+                        id="type" placeholder="inserire la tipologia " value=" {{old('type', $comic->type )}} ">
                     <div class="invalid-feedback">
                         @error('type')
                             {{ $message }}
@@ -96,7 +97,7 @@
                     <label for="description" class="form-label">Description</label>
                     <textarea class="form-control bg-dark text-light @error('description')
                     is-invalid  @enderror"
-                        name="description" id="description" rows="3">{{old('description')}}</textarea>
+                        name="description" id="description" rows="3">{{old('description', $comic->description )}}</textarea>
                     <div class="invalid-feedback">
                         @error('description')
                             {{ $message }}
@@ -104,7 +105,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-primary" type="submit">Create</button>
+                <button class="btn btn-success" type="submit">Update</button>
 
             </form>
 

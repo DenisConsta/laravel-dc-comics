@@ -79,7 +79,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', compact('comic'));
     }
 
     /**
@@ -89,9 +89,18 @@ class ComicController extends Controller
      * @param  \App\Models\Comic  $comic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic)
+    public function update(ComicRequest $request, Comic $comic)
     {
-        //
+
+        $form_data = $request->all();
+        if ($form_data['title'] != $comic->title)
+            $form_data['slug'] = Comic::generateSlug($form_data['title']);
+        /* else
+            $form_data['slug'] = $comic->slug; */
+
+        $comic->update($form_data);
+
+        return redirect()->route('comics.index')->with('success', 'Comic updated successfully');
     }
 
     /**
@@ -102,6 +111,8 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return redirect()->route('comics.index')->with('success', 'Comic deleted successfully');
     }
 }

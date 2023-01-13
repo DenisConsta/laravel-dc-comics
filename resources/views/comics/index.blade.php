@@ -20,18 +20,25 @@
                     @forelse ($comics as $card)
                         <div class="col mb-4 h-100">
                             <div class="my-card h-100">
-                                <img style="height: 290px; max-width: 190px;" src=" {{ $card->thumb }} "
-                                    alt="">
+                                <img style="height: 290px; max-width: 190px;" src=" {{ $card->thumb }} " alt="">
                                 <h3 class="text-light lead"> {{ $card->title }} </h3>
 
                                 <div class="btns">
-                                    <a href=" {{route('comics.show', $card)}} " title="show" class="btn btn-primary"><i
+                                    <a href=" {{ route('comics.show', $card) }} " title="show" class="btn btn-primary"><i
                                             class="fa-regular fa-eye"></i></a>
-                                    <a href=" # " title="show" class="btn btn-warning"><i
+                                    <a href=" {{ route('comics.edit', $card) }} " title="edit" class="btn btn-warning"><i
                                             class="fa-solid fa-pen-to-square"></i></a>
-                                    <button class="btn btn-danger">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
+
+
+                                    <form class="d-inline" action=" {{ route('comics.destroy', $card) }} " method="POST"
+                                        onsubmit="return confirm('Sei sicuro di voler eliminare {{ $card->title }} ')">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button class="btn btn-danger" title="delete">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
 
                                 </div>
 
