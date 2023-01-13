@@ -16,6 +16,26 @@ ul {
     }
 }
 
+.my-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+
+    .btns{
+        display: none;
+        position: absolute;
+
+    }
+
+    &:hover .btns{
+        display: block;
+    }
+
+}
+
 header {
     nav {
         padding: 1rem 0;

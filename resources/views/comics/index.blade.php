@@ -16,15 +16,24 @@
                     </div>
                 @endif
                 <!-- ? Row -->
-                <div class="row row-cols-xl-4 row-cols-xxl-4 w-100">
+                <div class="row row-cols-xl-4 row-cols-xxl-4 w-100 ">
                     @forelse ($comics as $card)
-                        <div class="col mb-4">
-                            <div class="my-card">
-                                <a class="text-decoration-none" href=" {{ route('comics.show', $card) }} ">
-                                    <img style="max-height: 290px; max-width: 190px;" src=" {{ $card->thumb }} "
-                                        alt="">
-                                    <h3 class="text-light lead"> {{ $card->series }} </h3>
-                                </a>
+                        <div class="col mb-4 h-100">
+                            <div class="my-card h-100">
+                                <img style="height: 290px; max-width: 190px;" src=" {{ $card->thumb }} "
+                                    alt="">
+                                <h3 class="text-light lead"> {{ $card->title }} </h3>
+
+                                <div class="btns">
+                                    <a href=" {{route('comics.show', $card)}} " title="show" class="btn btn-primary"><i
+                                            class="fa-regular fa-eye"></i></a>
+                                    <a href=" # " title="show" class="btn btn-warning"><i
+                                            class="fa-solid fa-pen-to-square"></i></a>
+                                    <button class="btn btn-danger">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+
+                                </div>
 
                             </div>
                         </div>
